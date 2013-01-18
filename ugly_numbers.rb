@@ -46,19 +46,20 @@ class Platter
 
 
 		begin
-			until self.inspect==last_round do
+			until bump(1)==last_round do
 				if ugly?( eval( self.inspect) )
 				  puts "self.inspect: #{self.inspect}=#{eval(self.inspect)} - is ugly!"
 					expressions << (self.inspect << "=#{eval(self.inspect)}")
 				else
 				  puts "self.inspect: #{self.inspect}=#{eval(self.inspect)} - is NOT ugly!"
 				end
-				bump 1
 			end
 		rescue => e
+			#This is for debugging purposes, without it, all errors are caught here
+			#and I can't determine why something failed
 			raise e unless e.to_s=="done"
-			expressions.each {|x| p x }
-			printf "Done!   Sequence: #{@@orig_seq} has #{expressions.length} number of expressions that eval to an ugly number.\n"
+			#printf "Done!   Sequence: #{@@orig_seq} has #{expressions.length} number of expressions that eval to an ugly number.\n"
+			puts expressions.length
 		end
 
 		last_round=self.inspect
