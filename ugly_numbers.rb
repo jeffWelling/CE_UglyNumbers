@@ -48,10 +48,10 @@ class Platter
 		begin
 			until self.inspect==last_round do
 				if ugly?( eval( self.inspect.gsub( /0+/ ,'' )) )
-				  puts "self.inspect: #{self.inspect}=#{eval(self.inspect)} - is ugly!"
+				  #puts "self.inspect: #{self.inspect}=#{eval(self.inspect)} - is ugly!"
 					expressions << (self.inspect << "=#{eval(self.inspect.gsub( /0+/ ,'' ))}")
 				else
-				  puts "self.inspect: #{self.inspect}=#{eval(self.inspect)} - is NOT ugly!"
+				  #puts "self.inspect: #{self.inspect}=#{eval(self.inspect)} - is NOT ugly!"
 				end
 			bump 1
 			end
@@ -93,7 +93,6 @@ end
 
 begin
 sequences.each {|seq|
-	puts "Calculating sequence #{seq}..."
 	p=Platter.new seq
 	p.calc_exp
 }
