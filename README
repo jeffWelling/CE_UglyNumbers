@@ -1,0 +1,10 @@
+This is my attempt at solving the Ugly Numbers challenge on the CodeEval.com website.
+
+To run it:  
+
+    ./ugly_numbers.rb numbers.txt
+
+numbers.txt is expected to be a list of numbers, one per line.  Running the program will print out a number, one per line, and that number is the total number of expressions for that number sequence that evaluates to an ugly number.  
+
+For more information:
+http://codeeval.com/open_challenges/42/
