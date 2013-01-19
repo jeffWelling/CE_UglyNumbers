@@ -46,13 +46,14 @@ class Platter
 
 
 		begin
-			until bump(1)==last_round do
-				if ugly?( eval( self.inspect) )
+			until self.inspect==last_round do
+				if ugly?( eval( self.inspect.gsub( /0+/ ,'' )) )
 				  puts "self.inspect: #{self.inspect}=#{eval(self.inspect)} - is ugly!"
-					expressions << (self.inspect << "=#{eval(self.inspect)}")
+					expressions << (self.inspect << "=#{eval(self.inspect.gsub( /0+/ ,'' ))}")
 				else
 				  puts "self.inspect: #{self.inspect}=#{eval(self.inspect)} - is NOT ugly!"
 				end
+			bump 1
 			end
 		rescue => e
 			#This is for debugging purposes, without it, all errors are caught here
